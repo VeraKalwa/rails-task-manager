@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+
+<h1>My list</h1>
+<ul>
+  <% @tasks.each do |task| %>
+    <li>
+      <% if task.completed %>
+          <p><i class="far fa-check-square"></i>
+          <%= link_to "#{task.title}", "/tasks/#{task.id}" %>  <%= link_to ('<i class="far fa-trash-alt"></i>').html_safe, task_path(task), method: :delete, data: { confirm: "Are you sure?" } %></p>
+          <% else %>
+          <p><i class="far fa-square"></i>
+          <%= link_to "#{task.title}", "/tasks/#{task.id}" %>  <%= link_to ('<i class="far fa-trash-alt"></i>').html_safe, task_path(task), method: :delete, data: { confirm: "Are you sure?" } %></p>
+        <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<p><i class="fas fa-plus"></i> <%= link_to "Add a new task", "/tasks/new" %></p>
+
+
+
